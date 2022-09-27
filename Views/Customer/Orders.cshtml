@@ -1,0 +1,39 @@
+@model CustomerViewModel
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="container">
+  <h1 class="display-4">Orders</h1>
+  <br>
+  <div class="row">
+      <div class="col-sm"><p class="fw-bold align-bottom">Name</p></div>
+      <div class="col-sm"><p class="fw-bold align-bottom">Customer #</p></div>
+  </div>
+  <div class="row"">
+      <div class="col-sm"><p>@Model.FullName</p></div>
+      <div class="col-sm"><p>@Model.CustomerNumber</p></div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Order Id</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (CustomerOrder co in Model.Orders)
+      {
+        <tr>
+          <td>@co.OrderId</td>
+          <td>@co.OrderDate</td>
+          <td>@co.Description</td>
+          <td>$@co.Curr</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
